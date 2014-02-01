@@ -32,7 +32,8 @@
 
 		var defaults = {
 			duration : 1000,
-			easing   : 'easeOutQuint'
+			easing   : 'easeOutQuint',
+			offset   : 0
 		};
 		params = $.extend( defaults, params );
 
@@ -68,12 +69,12 @@
 					return;
 				targetBody.animate(
 					{
-						scrollTop: offset.top
+						scrollTop: offset.top + params.offset
 					},
 					params.duration,
 					params.easing,
 					function() {
-						location.hash = targetHash;
+						if(params.offset === 0){ location.hash = targetHash; }
 					}
 				);
 
